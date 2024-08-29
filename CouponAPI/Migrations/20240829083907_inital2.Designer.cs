@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CouponAPI.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240822092931_Initial Creation")]
-    partial class InitialCreation
+    [Migration("20240829083907_inital2")]
+    partial class inital2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

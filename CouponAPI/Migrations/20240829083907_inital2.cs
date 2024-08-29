@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace CouponAPI.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreation : Migration
+    public partial class inital2 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
