@@ -1,0 +1,59 @@
+﻿@model IEnumerable<CouponDTO>
+
+	<h1>All Coupons</h1>
+	<p>
+	<a asp-action="CouponCreate" class="btn btn-outline-primary"><i class="fade fa-plus"></i>Create New</a>
+	</p>
+	<table class ="table">
+		<thead>
+			<tr>
+				<th>
+				@Html.DisplayNameFor(model => model.ID)
+				</th>
+				<th>
+				@Html.DisplayNameFor(model => model.Name)
+				</th>
+				<th>
+				@Html.DisplayNameFor(model => model.Percent)
+				</th>
+				<th>
+				@Html.DisplayNameFor(model => model.IsActive)
+				</th>
+				<th>
+				@Html.DisplayNameFor(model => model.Created)
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var item in Model)
+			{
+				<tr>
+					<td>
+						@Html.DisplayFor(modelItem => item.ID)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.Name)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.Percent)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.IsActive)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.Created)
+					</td>
+
+					<td>
+						<a asp-action="Details" class="btn btn-success" asp-route-id="@item.ID">Details<i class="fa fa-edit"></i></a>
+
+						<a asp-action ="UpdateCoupon" class="btn btn-warning" asp-route-id ="@item.ID">Edit<i class="fa fa-edit"></i> </a>
+
+					<a asp-action="DeleteCoupon" class="btn btn-danger" asp-route-id="@item.ID">Delete<i class="fa fa-trash"></i> </a>
+
+					</td>
+
+				</tr>
+			}
+		</tbody>
+	</table>

@@ -1,3 +1,10 @@
+using CouponAPI.Models.DTOs;
+using CouponAPI.Repository;
+using Microsoft.AspNetCore.Mvc.ApiExplorer;
+using Web_Coupon.Controllers;
+using Web_Coupon.Models;
+using Web_Coupon.Services;
+
 namespace Web_Coupon
 {
     public class Program
@@ -6,8 +13,12 @@ namespace Web_Coupon
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
-            builder.Services.AddControllersWithViews();
+			// Add services to the container.
+            builder.Services.AddScoped<ICouponService, CouponService>();			
+			builder.Services.AddControllersWithViews();
+            builder.Services.AddHttpClient();
+            
+            StaticDetails.CouponApiBase = builder.Configuration["ServiceUrls:SUT23CouponAPI"];
 
             var app = builder.Build();
 
@@ -18,8 +29,8 @@ namespace Web_Coupon
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
-            app.UseHttpsRedirection();
+		
+			app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseRouting();

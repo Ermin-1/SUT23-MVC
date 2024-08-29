@@ -1,0 +1,38 @@
+﻿@model CouponDTO
+
+<h1>Update Coupon</h1>
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="UpdateCoupon">
+            <input asp-for="ID" hidden />
+
+            <div class="form-group">
+                <label asp-for="Name" class="control-group"></label>
+                <input asp-for="Name" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Percent" class="control-group"></label>
+                <input asp-for="Percent" class="form-control" />
+            </div>
+
+            <div class="form-group from-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for=IsActive /> @Html.DisplayNameFor(model => model.IsActive)
+                </label>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Created" class="control-group"></label>
+                <input asp-for="Created" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+
+        </form>
+    </div>
+</div>

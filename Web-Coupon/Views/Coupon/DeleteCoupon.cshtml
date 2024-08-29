@@ -1,0 +1,48 @@
+﻿@model CouponDTO
+
+<h1>Delete</h1>
+
+<div>
+	<form asp-action ="DeleteCoupon">
+		<input asp-for="ID" hidden />
+		<div class="container border p-3">
+			<hr />
+			<div class="row">
+
+				<div class="col-2">
+					<label asp-for="Name" class="control-label pt-2" style="font:20px"></label>
+				</div>
+				<div class="col-10 pb-3">
+					<input asp-for="Name" disabled class="form-control"/>
+				</div>
+
+				<div class="col-2">
+					<label asp-for="Percent" class="control-label pt-2" style="font:20px"></label>
+				</div>
+				<div class="col-10 pb-3">
+					<input asp-for="Percent" disabled class="form-control" />
+				</div>
+
+				<div class="col-2">
+					<label asp-for="IsActive" class="control-label pt-2" style="font:20px"></label>
+				</div>
+				<div class="col-10 pb-3">
+					<input asp-for="IsActive" disabled class="form-control" />
+				</div>
+
+				<div class="col-2">
+					<label asp-for="Created" class="control-label pt-2" style="font:20px"></label>
+				</div>
+				<div class="col-10 pb-3">
+					<input asp-for="Created" disabled class="form-control" />
+				</div>
+
+				<div class="col-5">
+					<input type="submit" value="Delete" class="btn btn-danger" />
+					<a asp-action="CouponIndex">Back to list</a>
+				</div>
+
+			</div>
+		</div>
+	</form>
+</div>
