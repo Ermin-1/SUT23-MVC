@@ -1,8 +1,10 @@
 
 using AutoMapper;
 using CouponAPI.Data;
+using CouponAPI.EndPoint;
 using CouponAPI.Models;
 using CouponAPI.Models.DTOs;
+using CouponAPI.Repository;
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -27,6 +29,8 @@ namespace CouponAPI
             //Register Database
             builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("Connection")));
 
+            builder.Services.AddScoped<ICouponRepository, CouponRepository>();
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -40,16 +44,16 @@ namespace CouponAPI
 
             app.UseAuthorization();
 
-            app.MapGet("/api/coupons", () =>
-            {
-                APIResponse response = new APIResponse();
+            //app.MapGet("/api/coupons", () =>
+            //{
+            //    APIResponse response = new APIResponse();
 
-                response.Result = CouponStore.couponList;
-                response.IsSuccess = true;
-                response.StatusCode = System.Net.HttpStatusCode.OK;
+            //    response.Result = CouponStore.couponList;
+            //    response.IsSuccess = true;
+            //    response.StatusCode = System.Net.HttpStatusCode.OK;
 
-                return Results.Ok(response);
-            }).WithName("GetCoupons").Produces(200);
+            //    return Results.Ok(response);
+            //}).WithName("GetCoupons").Produces(200);
 
             app.MapGet("/api/coupon/{id:int}", (int id) =>
             {
@@ -156,8 +160,10 @@ namespace CouponAPI
                     return Results.BadRequest(response);
                 }
             }).WithName("DeleteCoupon");
-            
-            app.Run();
+
+            app.ConfigurationCouponEndPoints();
+
+			app.Run();
         }
     }
 }
