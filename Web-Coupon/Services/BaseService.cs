@@ -9,6 +9,7 @@ namespace Web_Coupon.Services
         public ResponseDTO responseModel { get; set; }
         public IHttpClientFactory _httpClient { get; set; }
 
+        //tar emot en instans av Ihhtpfacotry för att skapa en http klient i konstruktorn 
         public BaseService(IHttpClientFactory httpClient)
         {
             _httpClient = httpClient;
